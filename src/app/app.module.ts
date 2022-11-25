@@ -10,9 +10,10 @@ import { LoginComponent } from './account/login/login.component';
 import { CreateAccountComponent } from './account/create-account/create-account.component';
 import { HomeComponent } from './layout/home/home.component';
 import { AuthenticationComponent } from './layout/authentication/authentication.component';
+import { BatatasComponent } from './batatas/batatas.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, CreateAccountComponent, HomeComponent, AuthenticationComponent],
+  declarations: [AppComponent, LoginComponent, CreateAccountComponent, HomeComponent, AuthenticationComponent, BatatasComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
