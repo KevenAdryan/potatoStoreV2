@@ -1,1 +1,29 @@
-<p>login works!</p>
+<mat-card class="card-formulario">
+  <mat-card-content>
+    <form (ngSubmit)="logar()" #form="ngForm">
+      <div class="logo">
+        <img src="../../../assets/img/logo.png" alt="" class="img" />
+      </div>
+
+      <div class="formulario">
+        <div class="input">
+          <mat-icon color="primary">account_circle</mat-icon>
+          <mat-form-field>
+            <mat-label>Usuário</mat-label>
+            <input matInput type="text" name="usuario" id="usuario" [(ngModel)]="login.usuario" required>
+          </mat-form-field>
+        </div>
+
+        <div class="input">
+          <mat-icon color="primary">lock</mat-icon>
+          <mat-form-field>
+            <mat-label>Senha</mat-label>
+            <input matInput type="password" name="senha" id="senha" [(ngModel)]="login.senha" required/>
+          </mat-form-field>
+        </div>
+
+        <button mat-raised-button type="submit" color="primary" [disabled]="form.form.invalid">Entrar</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
