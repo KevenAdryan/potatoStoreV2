@@ -1,1 +1,22 @@
-<p>batatas works!</p>
+<div class="body">
+    <div class="pesquisa"> 
+        <mat-form-field >
+            <mat-label>Escolha sua batata</mat-label>
+            <input matInput type="text" matInput type="text" [(ngModel)]="value" (input)="search($event)">
+            <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''; getBatatas()">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+
+    <div *ngIf="batatas.length > 0" style="display: flex" class="prod">
+        <mat-card *ngFor="let produto of batatas; let i = index" class="prodItem">
+            <div class="container"> <!-- (click)="redirectDetail(produto.id)" -->
+                <img src="{{ produto.url }}" style="text-align: center" />
+            </div>
+            <div class="itemDesc"> <!-- (click)="redirectDetail(produto.id)" -->
+                <h1>{{ produto.nome }}&nbsp;&nbsp;-&nbsp;&nbsp;R$ {{ produto.valor }}</h1>
+            </div>
+        </mat-card>
+    </div>
+</div>
