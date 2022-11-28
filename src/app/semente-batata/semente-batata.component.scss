@@ -1,0 +1,33 @@
+.body {
+    padding: 3rem;
+  }
+  
+  .prod {
+    display: flex;
+    justify-content: flex-start;
+    row-gap: 1.5rem;
+    column-gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .prodItem {
+    border: white solid 1px;
+    text-align: center;
+    width: 20%;
+    cursor: pointer;
+    flex-grow: 1;
+  }
+  
+  .container img {
+    max-width: 12rem;
+    max-height: 14rem;
+    width: auto;
+    height: 12rem;
+  }
+  
+  .itemDesc {
+    margin-top: 1em;
+    padding-top: 1em;
+    border-top: white solid 1px;
+  }
+  
