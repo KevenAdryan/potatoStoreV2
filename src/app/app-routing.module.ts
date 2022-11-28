@@ -1,3 +1,4 @@
+import { BatataAssadaComponent } from './batata-assada/batata-assada.component';
 import { BatataCruaComponent } from './batata-crua/batata-crua.component';
 import { HomeComponent } from './layout/home/home.component';
 import { NgModule } from '@angular/core';
@@ -16,6 +17,7 @@ const routes: Routes = [
     children: [
       { path: '', component: BatatasComponent },
       { path: 'batata-crua', component: BatataCruaComponent },
+      { path: 'batata-assada', component: BatataAssadaComponent },
     ],
     canActivate: [AuthGuard],
   },
