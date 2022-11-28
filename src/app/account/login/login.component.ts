@@ -8,24 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
   constructor(private router: Router, private accountService: AccountService) {}
 
   ngOnInit(): void {}
 
   login = {
-    usuario: '',
+    email: '',
     senha: '',
   };
 
-  async logar() {
-    try {
-      const result = await this.accountService.login(this.login);
-      console.log(`login efetuado: ${result}`);
-
-      this.router.navigate(['']);
-    } catch (error) {
-      console.error(error);
-    }
+  logar() {
+    this.accountService.login(this.login.email, this.login.senha).subscribe({
+      next: (a) => {
+        window.localStorage.setItem('token', JSON.stringify(a.accessToken));
+        this.router.navigate(['']);
+      },
+      error: (error) => {
+        alert('Usuário ou senha inválido.');
+        console.error(error);
+      },
+    });
   }
 }

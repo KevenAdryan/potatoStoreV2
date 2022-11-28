@@ -1,15 +1,17 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AccountService {
-  constructor() {}
+  constructor(private httpClient: HttpClient) {}
 
-  login(user: any) {
-    return new Promise((resolve) => {
-      window.localStorage.setItem('token', 'meu-token');
-      resolve(true);
+  login(email: string, senha: string): Observable<any> {
+    return this.httpClient.post('http://localhost:3000/login', {
+      email: email,
+      password: senha,
     });
   }
 }
