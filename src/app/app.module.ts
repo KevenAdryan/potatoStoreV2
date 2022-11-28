@@ -22,6 +22,7 @@ import { CreateAccountComponent } from './account/create-account/create-account.
 import { HomeComponent } from './layout/home/home.component';
 import { AuthenticationComponent } from './layout/authentication/authentication.component';
 import { BatatasComponent } from './batatas/batatas.component';
+import { BatataCruaComponent } from './batata-crua/batata-crua.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { BatatasComponent } from './batatas/batatas.component';
     HomeComponent,
     AuthenticationComponent,
     BatatasComponent,
+    BatataCruaComponent,
   ],
   imports: [
     BrowserModule,
