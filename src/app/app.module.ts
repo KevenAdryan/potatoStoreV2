@@ -24,6 +24,7 @@ import { AuthenticationComponent } from './layout/authentication/authentication.
 import { BatatasComponent } from './batatas/batatas.component';
 import { BatataCruaComponent } from './batata-crua/batata-crua.component';
 import { BatataAssadaComponent } from './batata-assada/batata-assada.component';
+import { PureBatataComponent } from './pure-batata/pure-batata.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { BatataAssadaComponent } from './batata-assada/batata-assada.component';
     BatatasComponent,
     BatataCruaComponent,
     BatataAssadaComponent,
+    PureBatataComponent,
   ],
   imports: [
     BrowserModule,

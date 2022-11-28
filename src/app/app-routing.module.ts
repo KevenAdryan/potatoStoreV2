@@ -1,3 +1,4 @@
+import { PureBatataComponent } from './pure-batata/pure-batata.component';
 import { BatataAssadaComponent } from './batata-assada/batata-assada.component';
 import { BatataCruaComponent } from './batata-crua/batata-crua.component';
 import { HomeComponent } from './layout/home/home.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
       { path: '', component: BatatasComponent },
       { path: 'batata-crua', component: BatataCruaComponent },
       { path: 'batata-assada', component: BatataAssadaComponent },
+      { path: 'pure-batata', component: PureBatataComponent },
     ],
     canActivate: [AuthGuard],
   },
