@@ -1,14 +1,19 @@
+import { Router } from '@angular/router';
+import { TransfereService } from './../services/transfere-service.service';
 import { BatataService } from './../services/batata-service.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-batata-assada',
   templateUrl: './batata-assada.component.html',
-  styleUrls: ['./batata-assada.component.scss']
+  styleUrls: ['./batata-assada.component.scss'],
 })
 export class BatataAssadaComponent implements OnInit {
-
-  constructor(private batataService: BatataService) { }
+  constructor(
+    private batataService: BatataService,
+    public transfereService: TransfereService,
+    public router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getBatatas();
@@ -38,4 +43,8 @@ export class BatataAssadaComponent implements OnInit {
     });
   }
 
+  navegaDetail(id: any) {
+    this.transfereService.setData(id);
+    this.router.navigateByUrl('detail');
+  }
 }
