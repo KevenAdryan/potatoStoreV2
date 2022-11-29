@@ -20,7 +20,7 @@ export class BatataAssadaComponent implements OnInit {
   value = '';
 
   getBatatas() {
-    this.batataService.getBatata().subscribe((batatas: any) => {
+    this.batataService.getBatatas().subscribe((batatas: any) => {
       this.batatas = batatas.filter(
         (batata: any) => batata.tipo == 'batataAssada'
       );

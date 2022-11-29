@@ -1,3 +1,5 @@
+import { TransfereService } from './../services/transfere-service.service';
+import { Router } from '@angular/router';
 import { BatataService } from './../services/batata-service.service';
 
 import { Component, OnInit } from '@angular/core';
@@ -8,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./batatas.component.scss'],
 })
 export class BatatasComponent implements OnInit {
-  constructor(private batataService: BatataService) {}
+  constructor(
+    private batataService: BatataService,
+    private router: Router,
+    private transfereService: TransfereService
+  ) {}
 
   ngOnInit(): void {
     this.getBatatas();
@@ -20,7 +26,7 @@ export class BatatasComponent implements OnInit {
   value = '';
 
   getBatatas() {
-    this.batataService.getBatata().subscribe((batatas: any) => {
+    this.batataService.getBatatas().subscribe((batatas: any) => {
       this.batatas = batatas;
       this.produtos = batatas;
     });
@@ -33,5 +39,10 @@ export class BatatasComponent implements OnInit {
     this.batatas = this.produtos.filter((b) => {
       return b.nome.includes(value);
     });
+  }
+
+  navegaDetail(id: any) {
+    this.transfereService.setData(id);
+    this.router.navigateByUrl('detail');
   }
 }

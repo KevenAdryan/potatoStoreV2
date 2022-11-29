@@ -1,0 +1,48 @@
+<div class="prod"> 
+    <mat-card class="card">
+        <div class="prod-container">
+
+            <div class="container-img">
+                <img [src]="img" style="text-align: center;" class="img">
+            </div>
+
+            <div class="descricao">
+                <div class="tit-desc">
+                    <h1>{{ nome }} Por Apenas R$ {{ valor }} !!!!</h1>
+                </div>
+                <p> * Uma batata rica em nutrientes.</p>
+                <p> * Pode ser utilizada em qualquer
+                    receita e em qualquer variável do seu código.</p>
+                <p> * Recem colhida;</p>
+                <p> * Fresca (toma banho com chinelo);</p>
+                <p> * Pronta entrega (se ela estiver pronta para ser entregue).</p>
+            </div>
+
+            <div class="compra">
+                <mat-card class="compra-card" style="background: #4F4F4F;">
+                    <p> * Frete gratis para toda região 10 de cariacica.</p>
+                    <p> * Frete com taxa a partir de R$ 2,00 para todo o brasil.</p>
+                    <p> * Entregas feitas somente para quem joga Minecraft.</p>
+                    <mat-divider></mat-divider>
+                    <br />
+
+                    <div class="btn">
+                        <p>Quantidade vendida:</p>
+                        <p>É DE MAIS DE OITO MIL!</p>
+                    </div>
+
+                    <mat-divider></mat-divider>
+                    <br />
+                    <p class="btn">Estoque disponível!!</p>
+
+                    <div class="btn">
+                        <button  mat-raised-button color="primary" >Comprar agora</button> <!-- (click)="redirectPedido()" -->
+                    </div>
+
+                    <p class="btn">*Aceitamos cartões de débito ou crédito*</p>
+                </mat-card>
+            </div>
+
+        </div>
+    </mat-card>
+</div>

@@ -11,7 +11,7 @@
 
     <div *ngIf="batatas.length > 0" style="display: flex" class="prod">
         <mat-card *ngFor="let produto of batatas; let i = index" class="prodItem">
-            <div class="container"> <!-- (click)="redirectDetail(produto.id)" -->
+            <div class="container" (click)="navegaDetail(produto.id)"> <!-- (click)="redirectDetail(produto.id)" -->
                 <img src="{{ produto.url }}" style="text-align: center" />
             </div>
             <div class="itemDesc"> <!-- (click)="redirectDetail(produto.id)" -->

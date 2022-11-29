@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Batatas } from '../interfaces/batatas';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +9,11 @@ import { Injectable } from '@angular/core';
 export class BatataService {
   constructor(private http: HttpClient) {}
 
-  getBatata(): Observable<any> {
-    return this.http.get('http://localhost:3000/produtosAll');
+  getBatatas(): Observable<Batatas> {
+    return this.http.get<Batatas>('http://localhost:3000/produtosAll');
+  }
+
+  getBatataId(id: number): Observable<Batatas> {
+    return this.http.get<Batatas>(`http://localhost:3000/produtosAll/${id}`);
   }
 }
