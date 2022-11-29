@@ -1,3 +1,4 @@
+import { CriarPedidoComponent } from './criar-pedido/criar-pedido.component';
 import { DetailComponent } from './detail/detail.component';
 import { SementeBatataComponent } from './semente-batata/semente-batata.component';
 import { BatataFritaComponent } from './batata-frita/batata-frita.component';
@@ -20,17 +21,19 @@ const routes: Routes = [
     component: HomeComponent,
     children: [
       { path: '', component: BatatasComponent },
-      
+
       { path: 'batata-crua', component: BatataCruaComponent },
-      
+
       { path: 'batata-assada', component: BatataAssadaComponent },
-      
+
       { path: 'pure-batata', component: PureBatataComponent },
-      
+
       { path: 'batata-frita', component: BatataFritaComponent },
-      
+
       { path: 'semente-batata', component: SementeBatataComponent },
-      
+
+      { path: 'criar-pedido', component: CriarPedidoComponent },
+
       { path: 'detail', component: DetailComponent },
     ],
     canActivate: [AuthGuard],

@@ -16,6 +16,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatTableModule } from '@angular/material/table';
 
 import { LoginComponent } from './account/login/login.component';
 import { CreateAccountComponent } from './account/create-account/create-account.component';
@@ -28,6 +31,7 @@ import { PureBatataComponent } from './pure-batata/pure-batata.component';
 import { BatataFritaComponent } from './batata-frita/batata-frita.component';
 import { SementeBatataComponent } from './semente-batata/semente-batata.component';
 import { DetailComponent } from './detail/detail.component';
+import { CriarPedidoComponent } from './criar-pedido/criar-pedido.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +47,7 @@ import { DetailComponent } from './detail/detail.component';
     BatataFritaComponent,
     SementeBatataComponent,
     DetailComponent,
+    CriarPedidoComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,6 +64,9 @@ import { DetailComponent } from './detail/detail.component';
     MatIconModule,
     HttpClientModule,
     MatMenuModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent],
