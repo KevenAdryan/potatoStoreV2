@@ -42,11 +42,13 @@ export class CriarPedidoComponent implements OnInit {
 
   batatas: Batatas[] = [];
   produtos: Batatas[] = [];
+  produtos2: Batatas[] = [];
 
   carregaBatatas() {
     this.batataService.getBatatas().subscribe((prod: any) => {
       this.batatas = prod;
       this.produtos = prod;
+      this.produtos2 = prod;
     });
   }
 
@@ -63,24 +65,71 @@ export class CriarPedidoComponent implements OnInit {
     });
 
     if (tipo == 'todas') {
-      this.batatas = this.produtos;
+      this.batatas = this.produtos2;
     } else {
-      this.batatas = this.produtos.filter((t) => t.tipo == tipo);
+      this.batatas = this.produtos2.filter((t) => t.tipo == tipo);
+      this.produtos = this.batatas;
     }
   }
 
   search(letras: Event): void {
-    const target = letras.target as HTMLInputElement;
-    let value = target.value;
+    const targ = letras.target as HTMLInputElement;
+    let val = targ.value;
 
     this.batatas = this.produtos.filter((b) => {
-      return b.nome.includes(value);
+      return b.nome.includes(val);
     });
   }
 
-  addQTD(prod: object) {}
+  addQTD(prod: Batatas) {
+    const batata = this.produtos.filter((o) => o.id == prod.id);
+    batata.forEach((produto) => {
+      produto.qtd++;
+    });
 
-  subQTD(prod: object) {}
+    let valPagItem: any;
+    valPagItem = Number(prod.valor * prod.qtd).toFixed(2);
+
+    batata.forEach((item) => {
+      item.total = valPagItem;
+    });
+  }
+
+  alteraTotal(val: Event, prod: Batatas): void {
+    const target = val.target as HTMLInputElement;
+    let value = Number(target.value);
+
+    const batata = this.produtos.filter((o) => o.id == prod.id);
+
+    batata.forEach((produto) => {
+      produto.qtd = value;
+    });
+
+    let valPagItem: any;
+    valPagItem = Number(prod.valor * prod.qtd).toFixed(2);
+
+    batata.forEach((item) => {
+      item.total = valPagItem;
+    });
+  }
+
+  subQTD(prod: Batatas) {
+    const batata = this.produtos.filter((o) => o.id == prod.id);
+    batata.forEach((produto) => {
+      if (produto.qtd <= 0) {
+        produto.qtd = 0;
+      } else {
+        produto.qtd--;
+      }
+    });
+
+    let valPagItem: any;
+    valPagItem = Number(prod.valor * prod.qtd).toFixed(2);
+
+    batata.forEach((item) => {
+      item.total = valPagItem;
+    });
+  }
 
   somaPagar() {}
 

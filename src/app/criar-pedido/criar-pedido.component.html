@@ -54,7 +54,7 @@
                         
                         <mat-icon (click)="addQTD(produto); somaPagar()" style="cursor: pointer;">add_circle</mat-icon>
                         
-                        <input min="0" type="number" [(ngModel)] ="produto.qtd">
+                        <input min="0" type="number" [(ngModel)]="produto.qtd" (input)="alteraTotal($event, produto)">
                         
                         <mat-icon (click)="subQTD(produto); somaPagar()" style="cursor: pointer;">remove_circle</mat-icon>
 
