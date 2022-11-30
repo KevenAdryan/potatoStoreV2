@@ -19,6 +19,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTableModule } from '@angular/material/table';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 
 import { LoginComponent } from './account/login/login.component';
 import { CreateAccountComponent } from './account/create-account/create-account.component';
@@ -32,6 +33,7 @@ import { BatataFritaComponent } from './batata-frita/batata-frita.component';
 import { SementeBatataComponent } from './semente-batata/semente-batata.component';
 import { DetailComponent } from './detail/detail.component';
 import { CriarPedidoComponent } from './criar-pedido/criar-pedido.component';
+import { BottomSheetCriarPedidoComponent } from './criar-pedido/local-components/bottom-sheet-criar-pedido/bottom-sheet-criar-pedido.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { CriarPedidoComponent } from './criar-pedido/criar-pedido.component';
     SementeBatataComponent,
     DetailComponent,
     CriarPedidoComponent,
+    BottomSheetCriarPedidoComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,7 +69,8 @@ import { CriarPedidoComponent } from './criar-pedido/criar-pedido.component';
     MatMenuModule,
     MatSelectModule,
     MatCheckboxModule,
-    MatTableModule
+    MatTableModule,
+    MatBottomSheetModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

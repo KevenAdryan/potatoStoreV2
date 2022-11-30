@@ -1,8 +1,10 @@
+import { BottomSheetCriarPedidoComponent } from './local-components/bottom-sheet-criar-pedido/bottom-sheet-criar-pedido.component';
 import { BatataService } from './../services/batata-service.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { Batatas } from '../interfaces/batatas';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 
 @Component({
   selector: 'app-criar-pedido',
@@ -10,7 +12,10 @@ import { Batatas } from '../interfaces/batatas';
   styleUrls: ['./criar-pedido.component.scss'],
 })
 export class CriarPedidoComponent implements OnInit {
-  constructor(public batataService: BatataService) {}
+  constructor(
+    public batataService: BatataService,
+    private bottomSheet: MatBottomSheet
+  ) {}
 
   ngOnInit(): void {
     this.carregaBatatas();
@@ -43,6 +48,8 @@ export class CriarPedidoComponent implements OnInit {
   batatas: Batatas[] = [];
   produtos: Batatas[] = [];
   produtos2: Batatas[] = [];
+
+  totalPedido: number = 0;
 
   carregaBatatas() {
     this.batataService.getBatatas().subscribe((prod: any) => {
@@ -83,6 +90,7 @@ export class CriarPedidoComponent implements OnInit {
 
   addQTD(prod: Batatas) {
     const batata = this.produtos.filter((o) => o.id == prod.id);
+
     batata.forEach((produto) => {
       produto.qtd++;
     });
@@ -115,6 +123,7 @@ export class CriarPedidoComponent implements OnInit {
 
   subQTD(prod: Batatas) {
     const batata = this.produtos.filter((o) => o.id == prod.id);
+
     batata.forEach((produto) => {
       if (produto.qtd <= 0) {
         produto.qtd = 0;
@@ -131,9 +140,33 @@ export class CriarPedidoComponent implements OnInit {
     });
   }
 
-  somaPagar() {}
+  somaPagar() {
+    let aPagar: number[] = [];
 
-  fechaPedido() {}
+    const batatas = this.produtos.filter((o) => o.total > 0);
+
+    batatas.forEach((item) => {
+      aPagar.push(Number(item.total));
+    });
+
+    const result = aPagar.reduce((accumulator, current) => {
+      return accumulator + current;
+    }, 0);
+
+    const resultado = result.toFixed(2);
+
+    this.totalPedido = Number(resultado);
+
+    return resultado;
+  }
+
+  fechaPedido() {
+    const batatas = this.produtos.filter((o) => o.total > 0);
+
+    this.bottomSheet.open(BottomSheetCriarPedidoComponent, {
+      data: { batatas: batatas, total: this.totalPedido },
+    });
+  }
 
   openDialog() {}
 }
