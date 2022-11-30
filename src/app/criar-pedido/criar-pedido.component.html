@@ -10,17 +10,13 @@
                 </mat-select>
 
             </mat-form-field>
-
-            <p>
-                <mat-checkbox (change)="onChangeDemo($event)">Quero variar!</mat-checkbox>
-            </p>
         </div>
 
         <div class="pesquisa">
             <mat-form-field >
                 <mat-label>Escolha sua batata</mat-label>
                 <input matInput type="text" matInput type="text" [(ngModel)]="value" (input)="search($event)">
-                <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''; batatas = produtos">
                     <mat-icon>close</mat-icon>
                 </button>
             </mat-form-field>

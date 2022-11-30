@@ -19,14 +19,17 @@ export class CriarPedidoComponent implements OnInit {
   disabled = false;
 
   opcoes: any[] = [
-    { op: 'opt1', type: 'Batata Crua' },
-    { op: 'opt2', type: 'Batata Assada' },
-    { op: 'opt3', type: 'Purê de batata' },
-    { op: 'opt4', type: 'Batata Frita' },
-    { op: 'opt5', type: 'Semente de Batata' },
+    { op: 'opt0', type: 'Todas', nomeAPI: 'todas' },
+    { op: 'opt1', type: 'Batata Crua', nomeAPI: 'batataCrua' },
+    { op: 'opt2', type: 'Batata Assada', nomeAPI: 'batataAssada' },
+    { op: 'opt3', type: 'Purê de batata', nomeAPI: 'batataPure' },
+    { op: 'opt4', type: 'Batata Frita', nomeAPI: 'batataFrita' },
+    { op: 'opt5', type: 'Semente de Batata', nomeAPI: 'batataSemente' },
   ];
+  tipo!: string;
 
   value = '';
+  limpaCampos: boolean = false;
 
   displayedColumns: string[] = [
     'id',
@@ -38,24 +41,42 @@ export class CriarPedidoComponent implements OnInit {
   ];
 
   batatas: Batatas[] = [];
+  produtos: Batatas[] = [];
 
   carregaBatatas() {
     this.batataService.getBatatas().subscribe((prod: any) => {
       this.batatas = prod;
+      this.produtos = prod;
     });
   }
 
-  selecionaTipo(o: Event) {}
+  selecionaTipo(opcao: Event) {
+    let t = String(opcao);
+    let tipoOP: any[] = [];
+    let tipo: string = '';
 
-  onChangeDemo(ob: MatCheckboxChange) {
-    if (ob.checked) {
-      this.disabled = true;
+    tipoOP = this.opcoes.filter((opt) => opt.op == t);
+
+    tipoOP.forEach((i) => {
+      tipo = i.nomeAPI;
+      this.tipo = i.nome;
+    });
+
+    if (tipo == 'todas') {
+      this.batatas = this.produtos;
     } else {
-      this.disabled = false;
+      this.batatas = this.produtos.filter((t) => t.tipo == tipo);
     }
   }
 
-  search(e: Event): void {}
+  search(letras: Event): void {
+    const target = letras.target as HTMLInputElement;
+    let value = target.value;
+
+    this.batatas = this.produtos.filter((b) => {
+      return b.nome.includes(value);
+    });
+  }
 
   addQTD(prod: object) {}
 
@@ -63,7 +84,7 @@ export class CriarPedidoComponent implements OnInit {
 
   somaPagar() {}
 
-  fechaPedido(){}
+  fechaPedido() {}
 
-  openDialog(){}
+  openDialog() {}
 }
