@@ -1,11 +1,48 @@
-<div *ngIf="totalPedido <= 0" class="sem-pedido">
+<div *ngIf="totalPedido > 0" class="sem-pedido">
     <div>
         <h1>* Nenhum Pedido criado *</h1>
     </div>
 </div>
 
-<div *ngIf="totalPedido > 0" class="sem-pedido">
-    <div>
-        <h1>* Aki seu pedido será exibido *</h1>
+<div *ngIf="totalPedido <= 0" class="container">
+    <div class="lista-carrinho">
+        <mat-card>
+            <mat-tab-group mat-align-tabs="center">
+
+                <mat-tab label="Cartão">Cartão</mat-tab>
+                <mat-tab label="Pix">Pix</mat-tab>
+                <mat-tab label="Boleto">Boleto</mat-tab>
+
+            </mat-tab-group>
+        </mat-card>
+    </div>
+
+    <div class="pagamento-card">
+        <mat-card>
+            <mat-tab-group mat-align-tabs="center">
+
+                <mat-tab label="Cartão">
+                    <div class="cartao-tab">
+                        <h3>Selecione um tipo de pagamento de cartão:</h3>
+                        <mat-form-field>
+                            <mat-label>Ex: Débito</mat-label>
+                            <mat-select>
+                                <mat-option *ngFor="let tipo of tipoCartao" [value]="tipo.value"> {{ tipo.viewValue }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <h3>Digite o nome como está no cartão:</h3>
+                        <mat-form-field appearance="fill">
+                            <input matInput placeholder="xxxx xxxx xxxx xxxx" required type="number">
+                        </mat-form-field>
+                    </div>
+                </mat-tab>
+
+
+                <mat-tab label="Pix">Pix</mat-tab>
+                <mat-tab label="Boleto">Boleto</mat-tab>
+
+            </mat-tab-group>
+        </mat-card>
     </div>
 </div>

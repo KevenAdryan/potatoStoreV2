@@ -20,6 +20,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTableModule } from '@angular/material/table';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { LoginComponent } from './account/login/login.component';
 import { CreateAccountComponent } from './account/create-account/create-account.component';
@@ -73,6 +74,7 @@ import { PagamentoComponent } from './pagamento/pagamento.component';
     MatCheckboxModule,
     MatTableModule,
     MatBottomSheetModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

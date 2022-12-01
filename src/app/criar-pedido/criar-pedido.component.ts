@@ -174,7 +174,6 @@ export class CriarPedidoComponent implements OnInit {
       .afterDismissed()
       .subscribe((res) => {
         if (res === 'OK') {
-          console.log('pedido fechado');
           this.transfereService.setData({
             batatas: batatas,
             total: this.totalPedido,
