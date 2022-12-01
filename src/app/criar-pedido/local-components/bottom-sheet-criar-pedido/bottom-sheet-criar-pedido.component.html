@@ -13,7 +13,7 @@
         </div>
 
         <div class="btns">
-            <button mat-raised-button >Cancelar</button>
+            <button mat-raised-button (click)="cancelar = true; finalizaPedido()">Cancelar</button>
             <button mat-raised-button color="primary" (click)="finalizaPedido()">Confirmar</button>
         </div>
 

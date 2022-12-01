@@ -21,12 +21,23 @@ export class BottomSheetCriarPedidoComponent implements OnInit {
   batatas: Batatas[] = [];
   totalPedido: number = 0;
 
+  cancelar: boolean = false;
+
   ngOnInit(): void {
     this.batatas = this.data.batatas;
     this.totalPedido = this.data.total;
+    this.cancelar = false;
   }
 
   finalizaPedido() {
-    this.bottomSheetRef.dismiss();
+    if (this.cancelar) {
+      this.bottomSheetRef.dismiss();
+    } else {
+      if (this.batatas && this.totalPedido) {
+        this.bottomSheetRef.dismiss('OK');
+      } else {
+        this.bottomSheetRef.dismiss('NOT OK');
+      }
+    }
   }
 }

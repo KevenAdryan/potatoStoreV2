@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { TransfereService } from './../services/transfere-service.service';
 import { BottomSheetCriarPedidoComponent } from './local-components/bottom-sheet-criar-pedido/bottom-sheet-criar-pedido.component';
 import { BatataService } from './../services/batata-service.service';
 import { Component, OnInit } from '@angular/core';
@@ -14,7 +16,9 @@ import { MatBottomSheet } from '@angular/material/bottom-sheet';
 export class CriarPedidoComponent implements OnInit {
   constructor(
     public batataService: BatataService,
-    private bottomSheet: MatBottomSheet
+    private bottomSheet: MatBottomSheet,
+    public transfereService: TransfereService,
+    public router: Router
   ) {}
 
   ngOnInit(): void {
@@ -163,10 +167,21 @@ export class CriarPedidoComponent implements OnInit {
   fechaPedido() {
     const batatas = this.produtos.filter((o) => o.total > 0);
 
-    this.bottomSheet.open(BottomSheetCriarPedidoComponent, {
-      data: { batatas: batatas, total: this.totalPedido },
-    });
-  }
+    this.bottomSheet
+      .open(BottomSheetCriarPedidoComponent, {
+        data: { batatas: batatas, total: this.totalPedido },
+      })
+      .afterDismissed()
+      .subscribe((res) => {
+        if (res === 'OK') {
+          console.log('pedido fechado');
+          this.transfereService.setData({
+            batatas: batatas,
+            total: this.totalPedido,
+          });
 
-  openDialog() {}
+          this.router.navigateByUrl('pagamento');
+        }
+      });
+  }
 }

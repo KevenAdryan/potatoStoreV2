@@ -1,5 +1,5 @@
 <div class="prod"> 
-    <mat-card class="card">
+    <mat-card *ngIf="id >= 0" class="card">
         <div class="prod-container">
 
             <div class="container-img">
@@ -45,4 +45,9 @@
 
         </div>
     </mat-card>
+
+    <div *ngIf="id < 0">
+        <h1 style="font-size: 5rem;"> * Nenhuma batata selecionada * </h1>
+    </div>
 </div>
+

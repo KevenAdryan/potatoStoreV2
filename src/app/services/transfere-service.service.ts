@@ -8,7 +8,6 @@ export class TransfereService {
   constructor() {}
 
   data: any;
-  data2: any;
 
   public setData(data: any) {
     this.data = data;

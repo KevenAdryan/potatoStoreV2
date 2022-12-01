@@ -1,3 +1,4 @@
+import { PagamentoComponent } from './pagamento/pagamento.component';
 import { CriarPedidoComponent } from './criar-pedido/criar-pedido.component';
 import { DetailComponent } from './detail/detail.component';
 import { SementeBatataComponent } from './semente-batata/semente-batata.component';
@@ -35,6 +36,8 @@ const routes: Routes = [
       { path: 'criar-pedido', component: CriarPedidoComponent },
 
       { path: 'detail', component: DetailComponent },
+
+      { path: 'pagamento', component: PagamentoComponent },
     ],
     canActivate: [AuthGuard],
   },

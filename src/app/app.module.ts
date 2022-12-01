@@ -34,6 +34,7 @@ import { SementeBatataComponent } from './semente-batata/semente-batata.componen
 import { DetailComponent } from './detail/detail.component';
 import { CriarPedidoComponent } from './criar-pedido/criar-pedido.component';
 import { BottomSheetCriarPedidoComponent } from './criar-pedido/local-components/bottom-sheet-criar-pedido/bottom-sheet-criar-pedido.component';
+import { PagamentoComponent } from './pagamento/pagamento.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { BottomSheetCriarPedidoComponent } from './criar-pedido/local-components
     DetailComponent,
     CriarPedidoComponent,
     BottomSheetCriarPedidoComponent,
+    PagamentoComponent,
   ],
   imports: [
     BrowserModule,

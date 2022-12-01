@@ -14,7 +14,13 @@ export class DetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.id = Number(this.transfereService.getData());
+    let data = Number(this.transfereService.getData());
+
+    if (data) {
+      this.id = data;
+    } else {
+      this.id = -1;
+    }
 
     this.batataService.getBatataId(this.id).subscribe((batata) => {
       this.img = batata.url;
@@ -23,7 +29,7 @@ export class DetailComponent implements OnInit {
     });
   }
 
-  id: number = 0;
+  id: any;
   img: string = '';
   valor: number = 0;
   nome: string = '';
