@@ -1,3 +1,7 @@
+import { HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { TransfereService } from './../services/transfere-service.service';
+import { BatataService } from './../services/batata-service.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BatataAssadaComponent } from './batata-assada.component';
@@ -8,16 +12,16 @@ describe('BatataAssadaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BatataAssadaComponent ]
-    })
-    .compileComponents();
+      declarations: [BatataAssadaComponent],
+      imports: [HttpClientModule],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(BatataAssadaComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 });

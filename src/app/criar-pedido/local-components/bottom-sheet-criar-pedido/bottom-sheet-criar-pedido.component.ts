@@ -14,8 +14,7 @@ import { Batatas } from 'src/app/interfaces/batatas';
 export class BottomSheetCriarPedidoComponent implements OnInit {
   constructor(
     private bottomSheetRef: MatBottomSheetRef<BottomSheetCriarPedidoComponent>,
-    @Inject(MAT_BOTTOM_SHEET_DATA) public data: any,
-    private router: Router
+    @Inject(MAT_BOTTOM_SHEET_DATA) public data: any
   ) {}
 
   batatas: Batatas[] = [];

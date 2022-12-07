@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PureBatataComponent } from './pure-batata.component';
@@ -8,9 +9,9 @@ describe('PureBatataComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PureBatataComponent ]
-    })
-    .compileComponents();
+      declarations: [PureBatataComponent],
+      imports: [HttpClientModule],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PureBatataComponent);
     component = fixture.componentInstance;

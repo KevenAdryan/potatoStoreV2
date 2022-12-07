@@ -14,4 +14,11 @@ export class AccountService {
       password: senha,
     });
   }
+
+  // login(email: string, senha: string): Observable<any> {
+  //   return this.httpClient.post('https://potatostore-fcc99-default-rtdb.firebaseio.com/login.json', {
+  //     email: email,
+  //     password: senha,
+  //   });
+  // }
 }

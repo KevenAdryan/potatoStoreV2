@@ -23,19 +23,42 @@
 
                 <mat-tab label="Cartão">
                     <div class="cartao-tab">
-                        <h3>Selecione um tipo de pagamento de cartão:</h3>
-                        <mat-form-field>
-                            <mat-label>Ex: Débito</mat-label>
-                            <mat-select>
-                                <mat-option *ngFor="let tipo of tipoCartao" [value]="tipo.value"> {{ tipo.viewValue }}</mat-option>
-                            </mat-select>
-                        </mat-form-field>
+                        
+                        
+                        <form [formGroup]="formCardPay">
 
-                        <h3>Digite o nome como está no cartão:</h3>
-                        <mat-form-field appearance="fill">
-                            <input matInput placeholder="xxxx xxxx xxxx xxxx" required type="number">
-                        </mat-form-field>
+                            <h3>Selecione um tipo de pagamento de cartão:</h3>
+                            <mat-form-field>
+                                <mat-label>Ex: Débito</mat-label>
+                                <mat-select formControlName="tipCard">
+                                    <mat-option *ngFor="let tipo of tipoCartao" required [value]="tipo.value">{{ tipo.viewValue }}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <h3>Digite o nome como está no cartão:</h3>
+                            <mat-form-field >
+                                <input matInput formControlName="nomeCard" placeholder="Ex: Potato Store" required type="text">
+                            </mat-form-field>
+
+                            <h3>Digite o número como está no cartão:</h3>
+                            <mat-form-field>
+                                <input matInput formControlName="numCard" maxlength="16" required placeholder="Ex: 1234 1234 1234 1234">
+                            </mat-form-field>
+
+                            <div *ngIf="formCardPay.get('tipCard')?.value == 'op1'">
+                                <h3>Selecione o número de parcelas:</h3>
+                                <mat-form-field>
+                                    <mat-label>Ex: 1x de XX,XX</mat-label>
+                                    <mat-select formControlName="selParcelas">
+                                        <mat-option *ngFor="let parcela of parcelas; let i = index" required [value]="i">{{ parcela }}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                        </form>
                     </div>
+
+                    <button mat-raised-button color="primary" (click)="finalizaPedido()">Finalizar Pagamento</button>
                 </mat-tab>
 
 
