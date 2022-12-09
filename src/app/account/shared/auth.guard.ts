@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  CanActivate,
+  Router,
+  RouterStateSnapshot,
+} from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -7,12 +12,10 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from
 export class AuthGuard implements CanActivate {
   constructor(public router: Router) {}
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): boolean {
-    const token = window.localStorage.getItem('token');
-    if (token) {
+  token: any = window.localStorage.getItem('token');
+
+  canActivate(): boolean {
+    if (this.token) {
       return true;
     } else {
       this.router.navigate(['login']);
