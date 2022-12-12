@@ -40,6 +40,7 @@ describe('BatataAssadaComponent', () => {
     fixture.detectChanges();
     expect(spy).toHaveBeenCalled();
     component.batatas = ['bbb'];
+    fixture.detectChanges();
     expect(component.batatas.length).toBeGreaterThan(0);
   });
 

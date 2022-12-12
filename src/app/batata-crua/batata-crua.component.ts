@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class BatataCruaComponent implements OnInit {
   constructor(
     private batataService: BatataService,
-    private transfereService: TransfereService,
+    public transfereService: TransfereService,
     public router: Router
   ) {}
 
@@ -20,31 +20,19 @@ export class BatataCruaComponent implements OnInit {
   }
 
   batatas: any[] = [];
-  produtos: any[] = [];
 
   value = '';
 
   getBatatas() {
-    this.batataService.getBatatas().subscribe((batatas: any) => {
-      this.batatas = batatas.filter(
-        (batata: any) => batata.tipo == 'batataCrua'
-      );
-
-      this.produtos = this.batatas;
-    });
-  }
-
-  search(e: Event): void {
-    const target = e.target as HTMLInputElement;
-    const value = target.value;
-
-    this.batatas = this.produtos.filter((b) => {
-      return b.nome.includes(value);
+    this.batataService.getBatatas2('batataCrua').subscribe((batatas: any) => {
+      this.batatas = batatas;
     });
   }
 
   navegaDetail(id: any) {
     this.transfereService.setData(id);
-    this.router.navigateByUrl('detail');
+    this.router.navigate(['detail']);
   }
+
+  //batataCrua
 }
