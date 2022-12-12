@@ -38,9 +38,8 @@ describe('BatataAssadaComponent', () => {
 
     let spy = spyOn(batataService, 'getBatatas2').and.callThrough();
     fixture.detectChanges();
-    expect(spy).toHaveBeenCalled();
     component.batatas = ['bbb'];
-    fixture.detectChanges();
+    expect(spy).toHaveBeenCalled();
     expect(component.batatas.length).toBeGreaterThan(0);
   });
 
