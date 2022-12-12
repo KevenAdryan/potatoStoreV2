@@ -33,6 +33,4 @@ export class BatataCruaComponent implements OnInit {
     this.transfereService.setData(id);
     this.router.navigate(['detail']);
   }
-
-  //batataCrua
 }
