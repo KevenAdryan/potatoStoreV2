@@ -1,3 +1,4 @@
+import { FilterPipe } from './pipes/filter-pipe';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -54,6 +55,7 @@ import { PagamentoComponent } from './pagamento/pagamento.component';
     CriarPedidoComponent,
     BottomSheetCriarPedidoComponent,
     PagamentoComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,

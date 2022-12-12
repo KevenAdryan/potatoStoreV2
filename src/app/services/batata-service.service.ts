@@ -13,6 +13,17 @@ export class BatataService {
     return this.http.get<Batatas>('http://localhost:3000/produtosAll');
   }
 
+  getBatatas2(param: any): Observable<Batatas> {
+    let val;
+    if (param == '') {
+      val = this.http.get<Batatas>('http://localhost:3000/produtosAll');
+    } else {
+      val = this.http.get<Batatas>(`http://localhost:3000/produtosAll?tipo=${param}`);
+    }
+    
+    return val;
+  }
+
   getBatataId(id: number): Observable<Batatas> {
     return this.http.get<Batatas>(`http://localhost:3000/produtosAll/${id}`);
   }

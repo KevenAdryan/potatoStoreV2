@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
     this.accountService.login(this.login.email, this.login.senha).subscribe({
       next: (a) => {
         this.token = a.accessToken;
-        console.log(a);
         
         window.localStorage.setItem('token', JSON.stringify(this.token));
         this.router.navigate(['']);
