@@ -1,10 +1,18 @@
+import { of } from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { TransfereService } from './../services/transfere-service.service';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  fakeAsync,
+  TestBed,
+  tick,
+} from '@angular/core/testing';
 
 import { BatataAssadaComponent } from './batata-assada.component';
 import { BatataService } from '../services/batata-service.service';
+import { Batatas } from '../interfaces/batatas';
+import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('BatataAssadaComponent', () => {
   let component: BatataAssadaComponent;
@@ -21,6 +29,7 @@ describe('BatataAssadaComponent', () => {
         { provide: Router, useValue: router },
         BatataService,
       ],
+      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
 
     fixture = TestBed.createComponent(BatataAssadaComponent);
@@ -32,16 +41,19 @@ describe('BatataAssadaComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call getBatatas', async () => {
+  it('should call getBatatas', fakeAsync(() => {
     const debugElement = fixture.debugElement;
     let batataService = debugElement.injector.get(BatataService);
 
-    let spy = spyOn(batataService, 'getBatatas2').and.callThrough();
-    fixture.detectChanges();
-    component.batatas = ['bbb'];
-    expect(spy).toHaveBeenCalled();
-    expect(component.batatas.length).toBeGreaterThan(0);
-  });
+    let spy = spyOn(batataService, 'getBatatas2').and.returnValue(
+      of(<Batatas>(<unknown>[]))
+    );
+    let subSpy = spyOn(batataService.getBatatas2(''), 'subscribe');
+    component.ngOnInit();
+    tick();
+    expect(spy).toHaveBeenCalledBefore(subSpy);
+    expect(subSpy).toHaveBeenCalled();
+  }));
 
   it('should set data and navigate when called', () => {
     component.navegaDetail('');

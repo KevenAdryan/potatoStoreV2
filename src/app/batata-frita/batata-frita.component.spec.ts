@@ -9,7 +9,6 @@ import { BatataService } from '../services/batata-service.service';
 describe('BatataFritaComponent', () => {
   let component: BatataFritaComponent;
   let fixture: ComponentFixture<BatataFritaComponent>;
-
   let router = { navigate: jasmine.createSpy('navigate') };
 
   beforeEach(async () => {
@@ -46,7 +45,7 @@ describe('BatataFritaComponent', () => {
   it('should set data and navigate when called', () => {
     component.navegaDetail('');
     let service = spyOn(component.transfereService, 'setData');
-    service.withArgs(1).and.callFake((ob) => {
+    service.withArgs(1).and.callFake((ob: any) => {
       expect(ob).toHaveBeenCalled();
     });
 
