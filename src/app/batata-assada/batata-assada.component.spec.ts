@@ -60,8 +60,8 @@ describe('BatataAssadaComponent', () => {
     let service = spyOn(component.transfereService, 'setData');
     service.withArgs(1).and.callFake((ob) => {
       expect(ob).toHaveBeenCalled();
+      expect(router.navigate).toHaveBeenCalledWith(['detail']);
     });
 
-    expect(router.navigate).toHaveBeenCalledWith(['detail']);
   });
 });

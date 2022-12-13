@@ -5,6 +5,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BatataCruaComponent } from './batata-crua.component';
 import { BatataService } from '../services/batata-service.service';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('BatataCruaComponent', () => {
   let component: BatataCruaComponent;
@@ -21,6 +22,7 @@ describe('BatataCruaComponent', () => {
         { provide: Router, useValue: router },
         BatataService,
       ],
+      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
 
     fixture = TestBed.createComponent(BatataCruaComponent);
