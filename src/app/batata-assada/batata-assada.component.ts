@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { TransfereService } from './../services/transfere-service.service';
 import { BatataService } from './../services/batata-service.service';
 import { Component, OnInit } from '@angular/core';
+import { Batatas } from '../interfaces/batatas.interface';
 
 @Component({
   selector: 'app-batata-assada',
@@ -19,7 +20,7 @@ export class BatataAssadaComponent implements OnInit {
     this.getBatatas();
   }
 
-  batatas: any[] = [];
+  batatas: Batatas[] = [];
 
   value = '';
 

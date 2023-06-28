@@ -17,14 +17,10 @@ export class LoginComponent implements OnInit {
     senha: '',
   };
 
-  token: string = '';
-
   logar() {
     this.accountService.login(this.login.email, this.login.senha).subscribe({
-      next: (a) => {
-        this.token = a.accessToken;
-        
-        window.localStorage.setItem('token', JSON.stringify(this.token));
+      next: (auth) => {
+        window.localStorage.setItem('token', JSON.stringify(auth.accessToken));
         this.router.navigate(['']);
       },
       error: (error) => {

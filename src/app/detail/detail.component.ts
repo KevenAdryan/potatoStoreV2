@@ -14,14 +14,16 @@ export class DetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    let data = Number(this.transfereService.getData());
-
-    if (data) {
-      this.id = data;
+    if (Number(this.transfereService.getData())) {
+      this.id = Number(this.transfereService.getData());
     } else {
       this.id = -1;
     }
 
+    this.getBatata();
+  }
+
+  getBatata() {
     this.batataService.getBatataId(this.id).subscribe((batata) => {
       this.img = batata.url;
       this.valor = batata.valor;

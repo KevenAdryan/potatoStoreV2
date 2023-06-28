@@ -6,22 +6,33 @@ import { HomeComponent } from './home.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+    let component: HomeComponent;
+    let fixture: ComponentFixture<HomeComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [HomeComponent],
-      imports: [MatMenuModule],
-      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
-    }).compileComponents();
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            declarations: [HomeComponent],
+            imports: [MatMenuModule],
+            schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
+        }).compileComponents();
 
-    fixture = TestBed.createComponent(HomeComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+        fixture = TestBed.createComponent(HomeComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
+
+    it('Deve deslogar', () => {
+        const routerMock = jasmine.createSpyObj('Router', ['navigateByUrl']);
+        const componentMock = new HomeComponent(routerMock);
+        spyOn(localStorage, 'removeItem');
+
+        componentMock.logOut();
+
+        expect(localStorage.removeItem).toHaveBeenCalledWith('token');
+        expect(routerMock.navigateByUrl).toHaveBeenCalledWith('/login');
+    });
 });

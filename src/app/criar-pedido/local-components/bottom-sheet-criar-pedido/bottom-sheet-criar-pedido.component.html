@@ -7,19 +7,19 @@
             <mat-list role="list" *ngFor="let produto of batatas">
                 <mat-list-item role="listitem">* {{ produto.qtd }} - {{ produto.nome }}</mat-list-item>
             </mat-list>
-    
+
             <br />
             <h2>R$ {{ totalPedido }}</h2>
         </div>
 
         <div class="btns">
-            <button mat-raised-button (click)="cancelar = true; finalizaPedido()">Cancelar</button>
+            <button mat-raised-button (click)="fechabottomSheet()">Cancelar</button>
             <button mat-raised-button color="primary" (click)="finalizaPedido()">Confirmar</button>
         </div>
 
     </div>
 </div>
-  
+
 <div *ngIf="totalPedido <= 0">
     <div class="container-sem-ped">
         <h1>Seu pedido não possui itens!</h1>
